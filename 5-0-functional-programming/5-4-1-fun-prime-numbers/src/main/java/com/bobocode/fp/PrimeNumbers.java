@@ -30,6 +30,7 @@ public class PrimeNumbers {
      * @return an infinite int stream of prime numbers
      */
     public static IntStream stream() {
+
         throw new ExerciseNotCompletedException(); // todo: create an infinite stream of ints, then filter prime numbs
     }
 

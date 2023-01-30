@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import java.math.BigDecimal;
 import java.time.Month;
 import java.util.*;
+import java.util.function.BinaryOperator;
 import java.util.stream.Stream;
 
 import static java.util.Comparator.comparing;
@@ -118,6 +119,7 @@ public class CrazyStreams {
         return accounts.stream()
                 .map(Account::getEmail)
                 .anyMatch(email -> email.split("@")[1].equals(emailDomain));
+//        return accounts.stream().anyMatch(account -> account.getEmail().contains(emailDomain));
     }
 
     /**
@@ -191,7 +193,7 @@ public class CrazyStreams {
         return accounts.stream()
                 .collect(groupingBy(a -> a.getCreationDate().getMonth(),
                         mapping(Account::getBalance,
-                                reducing(BigDecimal.ZERO, BigDecimal::add))));
+                        reducing(BigDecimal.ZERO, BigDecimal::add))));
     }
 
     /**
